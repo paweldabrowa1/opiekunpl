@@ -1,0 +1,849 @@
+type Mutation {
+  deleteManyOffers(query: OfferQueryInput): DeleteManyPayload
+  deleteManyProfiles(query: ProfileQueryInput): DeleteManyPayload
+  deleteOneOffer(query: OfferQueryInput!): Offer
+  deleteOneProfile(query: ProfileQueryInput!): Profile
+  insertManyOffers(data: [OfferInsertInput!]!): InsertManyPayload
+  insertManyProfiles(data: [ProfileInsertInput!]!): InsertManyPayload
+  insertOneOffer(data: OfferInsertInput!): Offer
+  insertOneProfile(data: ProfileInsertInput!): Profile
+  replaceOneOffer(query: OfferQueryInput, data: OfferInsertInput!): Offer
+  replaceOneProfile(query: ProfileQueryInput, data: ProfileInsertInput!): Profile
+  updateManyOffers(query: OfferQueryInput, set: OfferUpdateInput!): UpdateManyPayload
+  updateManyProfiles(query: ProfileQueryInput, set: ProfileUpdateInput!): UpdateManyPayload
+  updateOneOffer(set: OfferUpdateInput!, query: OfferQueryInput): Offer
+  updateOneProfile(query: ProfileQueryInput, set: ProfileUpdateInput!): Profile
+  upsertOneOffer(query: OfferQueryInput, data: OfferInsertInput!): Offer
+  upsertOneProfile(data: ProfileInsertInput!, query: ProfileQueryInput): Profile
+}
+input ProfileNameInsertInput {
+  first: String
+  second: String
+}
+input OfferLocalizationUpdateInput {
+  street: String
+  street_unset: Boolean
+  city: String
+  city_unset: Boolean
+  countryCode: String
+  countryCode_unset: Boolean
+  postalCode: String
+  postalCode_unset: Boolean
+}
+type OfferTimeFrameHour {
+  from: Int
+  to: Int
+}
+enum OfferSortByInput {
+  DESCRIPTION_DESC
+  EMAIL_ASC
+  PAYMENTPERHOUR_ASC
+  _ID_ASC
+  GENDER_ASC
+  PHONENUMBER_ASC
+  PROFILE_ID_DESC
+  TITLE_DESC
+  TYPE_DESC
+  _ID_DESC
+  AVATAR_ASC
+  BIRTHDATE_ASC
+  BIRTHDATE_DESC
+  DESCRIPTION_ASC
+  GENDER_DESC
+  OFFER_ID_ASC
+  OFFER_ID_DESC
+  PHONENUMBER_DESC
+  AVATAR_DESC
+  EMAIL_DESC
+  PROFILE_ID_ASC
+  TITLE_ASC
+  TYPE_ASC
+  PAYMENTPERHOUR_DESC
+}
+input ProfilePatronInsertInput {
+  type: String
+  payment: ProfilePatronPaymentInsertInput
+  time: String
+}
+input OfferUpdateInput {
+  phoneNumber: String
+  title_unset: Boolean
+  requirements: OfferRequirementUpdateInput
+  avatar_unset: Boolean
+  title: String
+  hidden_unset: Boolean
+  type: String
+  email: String
+  requirements_unset: Boolean
+  offer_id: String
+  paymentPerHour_unset: Boolean
+  hidden: Boolean
+  phoneNumber_unset: Boolean
+  gender_unset: Boolean
+  type_unset: Boolean
+  offer_id_unset: Boolean
+  paymentPerHour: Int
+  avatar: String
+  _id_unset: Boolean
+  description: String
+  profile_id: OfferProfile_idRelationInput
+  paymentPerHour_inc: Int
+  birthDate_unset: Boolean
+  name: OfferNameUpdateInput
+  timeFrames_unset: Boolean
+  localization: OfferLocalizationUpdateInput
+  timeFrames: OfferTimeFrameUpdateInput
+  description_unset: Boolean
+  birthDate: DateTime
+  email_unset: Boolean
+  profile_id_unset: Boolean
+  _id: ObjectId
+  name_unset: Boolean
+  localization_unset: Boolean
+  gender: String
+}
+type ProfilePatron {
+  payment: ProfilePatronPayment
+  time: String
+  type: String
+}
+input OfferQueryInput {
+  avatar: String
+  description_ne: String
+  avatar_lte: String
+  title_lt: String
+  title: String
+  type: String
+  offer_id_lte: String
+  email_lte: String
+  gender_gte: String
+  gender_ne: String
+  paymentPerHour_ne: Int
+  email_lt: String
+  phoneNumber_nin: [String]
+  AND: [OfferQueryInput!]
+  _id_in: [ObjectId]
+  avatar_ne: String
+  phoneNumber: String
+  phoneNumber_lt: String
+  title_nin: [String]
+  gender_nin: [String]
+  type_lte: String
+  email_in: [String]
+  avatar_in: [String]
+  email_nin: [String]
+  description: String
+  birthDate_gt: DateTime
+  type_gt: String
+  birthDate_in: [DateTime]
+  phoneNumber_gte: String
+  title_ne: String
+  description_gt: String
+  email_ne: String
+  hidden: Boolean
+  type_gte: String
+  gender_gt: String
+  offer_id_lt: String
+  phoneNumber_lte: String
+  offer_id_gte: String
+  description_exists: Boolean
+  name: OfferNameQueryInput
+  hidden_ne: Boolean
+  profile_id: ProfileQueryInput
+  type_lt: String
+  description_gte: String
+  _id_gte: ObjectId
+  type_exists: Boolean
+  birthDate_exists: Boolean
+  offer_id_exists: Boolean
+  paymentPerHour_nin: [Int]
+  timeFrames: OfferTimeFrameQueryInput
+  _id: ObjectId
+  birthDate_gte: DateTime
+  paymentPerHour_in: [Int]
+  offer_id_in: [String]
+  localization: OfferLocalizationQueryInput
+  profile_id_exists: Boolean
+  phoneNumber_exists: Boolean
+  phoneNumber_in: [String]
+  phoneNumber_gt: String
+  email_gte: String
+  paymentPerHour_lt: Int
+  paymentPerHour: Int
+  localization_exists: Boolean
+  avatar_lt: String
+  name_exists: Boolean
+  paymentPerHour_exists: Boolean
+  description_in: [String]
+  gender_lt: String
+  offer_id: String
+  title_in: [String]
+  paymentPerHour_gt: Int
+  avatar_nin: [String]
+  avatar_gt: String
+  requirements: OfferRequirementQueryInput
+  title_gt: String
+  offer_id_ne: String
+  gender_lte: String
+  title_gte: String
+  requirements_exists: Boolean
+  gender: String
+  email_gt: String
+  type_nin: [String]
+  type_ne: String
+  title_exists: Boolean
+  OR: [OfferQueryInput!]
+  offer_id_gt: String
+  description_lte: String
+  gender_exists: Boolean
+  birthDate_nin: [DateTime]
+  type_in: [String]
+  _id_lte: ObjectId
+  gender_in: [String]
+  phoneNumber_ne: String
+  birthDate_lt: DateTime
+  birthDate: DateTime
+  description_nin: [String]
+  _id_lt: ObjectId
+  birthDate_lte: DateTime
+  _id_gt: ObjectId
+  avatar_exists: Boolean
+  description_lt: String
+  title_lte: String
+  email_exists: Boolean
+  _id_nin: [ObjectId]
+  paymentPerHour_gte: Int
+  _id_exists: Boolean
+  hidden_exists: Boolean
+  email: String
+  avatar_gte: String
+  _id_ne: ObjectId
+  paymentPerHour_lte: Int
+  offer_id_nin: [String]
+  timeFrames_exists: Boolean
+  birthDate_ne: DateTime
+}
+input OfferNameUpdateInput {
+  first: String
+  first_unset: Boolean
+  second: String
+  second_unset: Boolean
+}
+scalar ObjectId
+input OfferTimeFrameHourUpdateInput {
+  to: Int
+  to_inc: Int
+  to_unset: Boolean
+  from: Int
+  from_inc: Int
+  from_unset: Boolean
+}
+input OfferRequirementQueryInput {
+  OR: [OfferRequirementQueryInput!]
+  patron_exists: Boolean
+  patron: [String]
+  patron_in: [String]
+  patron_nin: [String]
+  patronising: [String]
+  patronising_in: [String]
+  patronising_exists: Boolean
+  AND: [OfferRequirementQueryInput!]
+  patronising_nin: [String]
+}
+type OfferLocalization {
+  city: String
+  countryCode: String
+  postalCode: String
+  street: String
+}
+input ProfilePatronPaymentInsertInput {
+  amount: Int
+  type: String
+}
+input ProfileUpdateInput {
+  avatar_unset: Boolean
+  birthDate: DateTime
+  localization_unset: Boolean
+  email: String
+  _id: ObjectId
+  phoneNumber_unset: Boolean
+  email_unset: Boolean
+  registerDate_unset: Boolean
+  description_unset: Boolean
+  patron_unset: Boolean
+  _id_unset: Boolean
+  phoneNumber: String
+  patron: ProfilePatronUpdateInput
+  auth_id: String
+  registerDate: DateTime
+  birthDate_unset: Boolean
+  type_unset: Boolean
+  localization: ProfileLocalizationUpdateInput
+  avatar: String
+  profile_id_unset: Boolean
+  auth_id_unset: Boolean
+  name: ProfileNameUpdateInput
+  profile_id: String
+  name_unset: Boolean
+  type: String
+  description: String
+  gender_unset: Boolean
+  gender: String
+}
+input OfferRequirementUpdateInput {
+  patron: [String]
+  patron_unset: Boolean
+  patronising: [String]
+  patronising_unset: Boolean
+}
+input ProfileInsertInput {
+  birthDate: DateTime
+  description: String
+  patron: ProfilePatronInsertInput
+  phoneNumber: String
+  name: ProfileNameInsertInput
+  auth_id: String
+  localization: ProfileLocalizationInsertInput
+  type: String
+  _id: ObjectId
+  gender: String
+  profile_id: String
+  email: String
+  registerDate: DateTime
+  avatar: String
+}
+type DeleteManyPayload {
+  deletedCount: Int!
+}
+input OfferTimeFrameDateUpdateInput {
+  from: DateTime
+  from_unset: Boolean
+  to: DateTime
+  to_unset: Boolean
+}
+input OfferTimeFrameInsertInput {
+  date: OfferTimeFrameDateInsertInput
+  hours: OfferTimeFrameHourInsertInput
+}
+input ProfileNameUpdateInput {
+  first: String
+  first_unset: Boolean
+  second: String
+  second_unset: Boolean
+}
+input ProfileLocalizationQueryInput {
+  postalCode: String
+  street_exists: Boolean
+  countryCode_gte: String
+  city_exists: Boolean
+  postalCode_in: [String]
+  street_in: [String]
+  city: String
+  countryCode_nin: [String]
+  city_in: [String]
+  postalCode_ne: String
+  city_lte: String
+  countryCode_lte: String
+  OR: [ProfileLocalizationQueryInput!]
+  city_gt: String
+  street_ne: String
+  street_gte: String
+  countryCode_in: [String]
+  countryCode_gt: String
+  countryCode_lt: String
+  city_lt: String
+  city_ne: String
+  postalCode_exists: Boolean
+  postalCode_lt: String
+  street_lte: String
+  postalCode_gt: String
+  city_gte: String
+  postalCode_nin: [String]
+  postalCode_gte: String
+  street_nin: [String]
+  AND: [ProfileLocalizationQueryInput!]
+  street: String
+  city_nin: [String]
+  countryCode: String
+  street_gt: String
+  countryCode_ne: String
+  street_lt: String
+  countryCode_exists: Boolean
+  postalCode_lte: String
+}
+type ProfilePatronPayment {
+  amount: Int
+  type: String
+}
+input OfferTimeFrameQueryInput {
+  OR: [OfferTimeFrameQueryInput!]
+  date: OfferTimeFrameDateQueryInput
+  date_exists: Boolean
+  hours: OfferTimeFrameHourQueryInput
+  hours_exists: Boolean
+  AND: [OfferTimeFrameQueryInput!]
+}
+input OfferLocalizationQueryInput {
+  postalCode_nin: [String]
+  city_gt: String
+  AND: [OfferLocalizationQueryInput!]
+  countryCode_ne: String
+  street_exists: Boolean
+  street_ne: String
+  street_gt: String
+  countryCode_gte: String
+  postalCode_ne: String
+  countryCode_lte: String
+  postalCode_lt: String
+  street_gte: String
+  city_exists: Boolean
+  countryCode_gt: String
+  street_in: [String]
+  postalCode: String
+  city_nin: [String]
+  city: String
+  city_gte: String
+  city_lt: String
+  street: String
+  street_nin: [String]
+  postalCode_gt: String
+  countryCode_in: [String]
+  city_in: [String]
+  countryCode: String
+  postalCode_gte: String
+  street_lt: String
+  postalCode_exists: Boolean
+  city_lte: String
+  countryCode_lt: String
+  street_lte: String
+  postalCode_in: [String]
+  postalCode_lte: String
+  countryCode_exists: Boolean
+  city_ne: String
+  countryCode_nin: [String]
+  OR: [OfferLocalizationQueryInput!]
+}
+input ProfileLocalizationUpdateInput {
+  street: String
+  street_unset: Boolean
+  city: String
+  city_unset: Boolean
+  countryCode: String
+  countryCode_unset: Boolean
+  postalCode: String
+  postalCode_unset: Boolean
+}
+input OfferLocalizationInsertInput {
+  countryCode: String
+  postalCode: String
+  street: String
+  city: String
+}
+input OfferRequirementInsertInput {
+  patron: [String]
+  patronising: [String]
+}
+input OfferTimeFrameDateQueryInput {
+  from_ne: DateTime
+  to_gt: DateTime
+  OR: [OfferTimeFrameDateQueryInput!]
+  AND: [OfferTimeFrameDateQueryInput!]
+  to_lte: DateTime
+  from_exists: Boolean
+  from_gte: DateTime
+  to_nin: [DateTime]
+  to_lt: DateTime
+  to_in: [DateTime]
+  from: DateTime
+  to_gte: DateTime
+  to: DateTime
+  from_lt: DateTime
+  to_exists: Boolean
+  from_lte: DateTime
+  to_ne: DateTime
+  from_in: [DateTime]
+  from_nin: [DateTime]
+  from_gt: DateTime
+}
+type OfferTimeFrame {
+  date: OfferTimeFrameDate
+  hours: OfferTimeFrameHour
+}
+input ProfileLocalizationInsertInput {
+  postalCode: String
+  street: String
+  city: String
+  countryCode: String
+}
+input OfferInsertInput {
+  description: String
+  type: String
+  hidden: Boolean
+  name: OfferNameInsertInput
+  title: String
+  localization: OfferLocalizationInsertInput
+  birthDate: DateTime
+  profile_id: OfferProfile_idRelationInput
+  timeFrames: OfferTimeFrameInsertInput
+  email: String
+  phoneNumber: String
+  avatar: String
+  requirements: OfferRequirementInsertInput
+  paymentPerHour: Int
+  _id: ObjectId
+  offer_id: String
+  gender: String
+}
+type OfferName {
+  first: String
+  second: String
+}
+input ProfilePatronUpdateInput {
+  payment: ProfilePatronPaymentUpdateInput
+  payment_unset: Boolean
+  time: String
+  time_unset: Boolean
+  type: String
+  type_unset: Boolean
+}
+input ProfilePatronPaymentUpdateInput {
+  type: String
+  type_unset: Boolean
+  amount: Int
+  amount_inc: Int
+  amount_unset: Boolean
+}
+input OfferTimeFrameHourInsertInput {
+  to: Int
+  from: Int
+}
+type InsertManyPayload {
+  insertedIds: [ObjectId]!
+}
+input ProfilePatronPaymentQueryInput {
+  amount_lte: Int
+  type: String
+  amount_in: [Int]
+  amount_exists: Boolean
+  type_lt: String
+  AND: [ProfilePatronPaymentQueryInput!]
+  amount_ne: Int
+  type_nin: [String]
+  amount_nin: [Int]
+  amount_lt: Int
+  amount: Int
+  type_in: [String]
+  amount_gt: Int
+  type_gt: String
+  OR: [ProfilePatronPaymentQueryInput!]
+  type_exists: Boolean
+  type_gte: String
+  type_lte: String
+  type_ne: String
+  amount_gte: Int
+}
+type Offer {
+  _id: ObjectId
+  avatar: String
+  birthDate: DateTime
+  description: String
+  email: String
+  gender: String
+  hidden: Boolean
+  localization: OfferLocalization
+  name: OfferName
+  offer_id: String
+  paymentPerHour: Int
+  phoneNumber: String
+  profile_id: Profile
+  requirements: OfferRequirement
+  timeFrames: OfferTimeFrame
+  title: String
+  type: String
+}
+input OfferProfile_idRelationInput {
+  create: ProfileInsertInput
+  link: String
+}
+input OfferTimeFrameDateInsertInput {
+  to: DateTime
+  from: DateTime
+}
+type Query {
+  offer(query: OfferQueryInput): Offer
+  offers(query: OfferQueryInput, limit: Int = 100, sortBy: OfferSortByInput): [Offer]!
+  profile(query: ProfileQueryInput): Profile
+  profiles(query: ProfileQueryInput, limit: Int = 100, sortBy: ProfileSortByInput): [Profile]!
+}
+input ProfileQueryInput {
+  email_lte: String
+  phoneNumber_lt: String
+  description_gt: String
+  gender_lte: String
+  patron: ProfilePatronQueryInput
+  description_lte: String
+  birthDate_nin: [DateTime]
+  avatar_lt: String
+  birthDate_ne: DateTime
+  gender_in: [String]
+  type_lt: String
+  gender_nin: [String]
+  birthDate_in: [DateTime]
+  description_lt: String
+  auth_id_gte: String
+  profile_id_exists: Boolean
+  registerDate_gte: DateTime
+  gender_lt: String
+  phoneNumber_lte: String
+  profile_id_ne: String
+  gender: String
+  auth_id_nin: [String]
+  type_gt: String
+  auth_id: String
+  description_in: [String]
+  OR: [ProfileQueryInput!]
+  birthDate_gt: DateTime
+  gender_gt: String
+  patron_exists: Boolean
+  phoneNumber_ne: String
+  name_exists: Boolean
+  _id_in: [ObjectId]
+  email_ne: String
+  birthDate_exists: Boolean
+  profile_id: String
+  type_nin: [String]
+  registerDate_exists: Boolean
+  type_lte: String
+  profile_id_in: [String]
+  auth_id_lt: String
+  registerDate: DateTime
+  auth_id_ne: String
+  profile_id_gte: String
+  registerDate_gt: DateTime
+  email_gt: String
+  phoneNumber_in: [String]
+  profile_id_gt: String
+  avatar_in: [String]
+  description_nin: [String]
+  _id_ne: ObjectId
+  _id_gt: ObjectId
+  type: String
+  birthDate: DateTime
+  avatar_nin: [String]
+  localization_exists: Boolean
+  email_lt: String
+  email_in: [String]
+  profile_id_lte: String
+  auth_id_lte: String
+  registerDate_in: [DateTime]
+  _id_gte: ObjectId
+  registerDate_lt: DateTime
+  AND: [ProfileQueryInput!]
+  avatar_exists: Boolean
+  phoneNumber: String
+  _id_exists: Boolean
+  email_nin: [String]
+  phoneNumber_exists: Boolean
+  description_exists: Boolean
+  _id_nin: [ObjectId]
+  avatar: String
+  description: String
+  auth_id_gt: String
+  avatar_gte: String
+  avatar_ne: String
+  type_ne: String
+  email: String
+  _id: ObjectId
+  phoneNumber_nin: [String]
+  birthDate_lte: DateTime
+  name: ProfileNameQueryInput
+  profile_id_nin: [String]
+  registerDate_ne: DateTime
+  type_exists: Boolean
+  avatar_gt: String
+  description_ne: String
+  gender_exists: Boolean
+  profile_id_lt: String
+  phoneNumber_gt: String
+  avatar_lte: String
+  auth_id_exists: Boolean
+  email_gte: String
+  registerDate_nin: [DateTime]
+  type_gte: String
+  _id_lt: ObjectId
+  auth_id_in: [String]
+  gender_gte: String
+  phoneNumber_gte: String
+  email_exists: Boolean
+  localization: ProfileLocalizationQueryInput
+  gender_ne: String
+  _id_lte: ObjectId
+  birthDate_lt: DateTime
+  birthDate_gte: DateTime
+  registerDate_lte: DateTime
+  description_gte: String
+  type_in: [String]
+}
+input OfferNameQueryInput {
+  first_exists: Boolean
+  second_gt: String
+  first_lt: String
+  first: String
+  second_ne: String
+  OR: [OfferNameQueryInput!]
+  second_gte: String
+  second_lte: String
+  second: String
+  first_ne: String
+  first_gte: String
+  first_in: [String]
+  first_nin: [String]
+  second_in: [String]
+  second_lt: String
+  second_nin: [String]
+  second_exists: Boolean
+  AND: [OfferNameQueryInput!]
+  first_gt: String
+  first_lte: String
+}
+input OfferTimeFrameHourQueryInput {
+  AND: [OfferTimeFrameHourQueryInput!]
+  from_lt: Int
+  from_nin: [Int]
+  to_gte: Int
+  to_lte: Int
+  from_gt: Int
+  from: Int
+  to_gt: Int
+  to_nin: [Int]
+  to_exists: Boolean
+  from_lte: Int
+  to_ne: Int
+  from_gte: Int
+  from_ne: Int
+  from_in: [Int]
+  to: Int
+  from_exists: Boolean
+  to_lt: Int
+  OR: [OfferTimeFrameHourQueryInput!]
+  to_in: [Int]
+}
+scalar DateTime
+input ProfileNameQueryInput {
+  second: String
+  second_gt: String
+  second_nin: [String]
+  first_gt: String
+  AND: [ProfileNameQueryInput!]
+  second_lt: String
+  second_lte: String
+  first: String
+  first_in: [String]
+  first_lte: String
+  second_gte: String
+  first_exists: Boolean
+  OR: [ProfileNameQueryInput!]
+  second_ne: String
+  second_in: [String]
+  first_lt: String
+  second_exists: Boolean
+  first_gte: String
+  first_nin: [String]
+  first_ne: String
+}
+type ProfileName {
+  first: String
+  second: String
+}
+input OfferTimeFrameUpdateInput {
+  date: OfferTimeFrameDateUpdateInput
+  date_unset: Boolean
+  hours: OfferTimeFrameHourUpdateInput
+  hours_unset: Boolean
+}
+input ProfilePatronQueryInput {
+  payment_exists: Boolean
+  time_nin: [String]
+  type_gt: String
+  payment: ProfilePatronPaymentQueryInput
+  type_ne: String
+  type_lt: String
+  AND: [ProfilePatronQueryInput!]
+  time_lt: String
+  time_in: [String]
+  time: String
+  type_lte: String
+  time_ne: String
+  type_nin: [String]
+  type_gte: String
+  time_gt: String
+  type: String
+  time_exists: Boolean
+  type_in: [String]
+  OR: [ProfilePatronQueryInput!]
+  time_lte: String
+  type_exists: Boolean
+  time_gte: String
+}
+type Profile {
+  _id: ObjectId
+  auth_id: String
+  avatar: String
+  birthDate: DateTime
+  description: String
+  email: String
+  gender: String
+  localization: ProfileLocalization
+  name: ProfileName
+  patron: ProfilePatron
+  phoneNumber: String
+  profile_id: String
+  registerDate: DateTime
+  type: String
+}
+enum ProfileSortByInput {
+  EMAIL_DESC
+  GENDER_ASC
+  GENDER_DESC
+  REGISTERDATE_ASC
+  REGISTERDATE_DESC
+  TYPE_ASC
+  AVATAR_DESC
+  DESCRIPTION_ASC
+  AVATAR_ASC
+  AUTH_ID_DESC
+  BIRTHDATE_ASC
+  BIRTHDATE_DESC
+  DESCRIPTION_DESC
+  EMAIL_ASC
+  PROFILE_ID_ASC
+  _ID_DESC
+  AUTH_ID_ASC
+  PROFILE_ID_DESC
+  PHONENUMBER_DESC
+  TYPE_DESC
+  _ID_ASC
+  PHONENUMBER_ASC
+}
+type OfferRequirement {
+  patron: [String]
+  patronising: [String]
+}
+type OfferTimeFrameDate {
+  from: DateTime
+  to: DateTime
+}
+type ProfileLocalization {
+  city: String
+  countryCode: String
+  postalCode: String
+  street: String
+}
+type UpdateManyPayload {
+  matchedCount: Int!
+  modifiedCount: Int!
+}
+input OfferNameInsertInput {
+  first: String
+  second: String
+}
